@@ -5,15 +5,19 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:moal_event/final_page.dart';
 
 class Question2 extends StatefulWidget {
-  Question2({super.key});
+  Question2({super.key, required this.name});
   int selectedNumber = 1;
+  final String name;
   @override
   State<Question2> createState() => _Question2State();
 }
 
 class _Question2State extends State<Question2> {
+  final _formKey = GlobalKey<FormState>(); // Unique key for the form
+
   @override
   Widget build(BuildContext context) {
+    print(widget.name);
     Key wrapKey = UniqueKey();
     bool isWideScreen = MediaQuery.of(context).size.width > 500;
 
@@ -81,12 +85,6 @@ class _Question2State extends State<Question2> {
                     height: isWideScreen ? 150.h : 150.h,
                   ),
                   // Only display the second image on wide screens
-                  Image.asset(
-                    'assets/3.png',
-                    fit: BoxFit.fill,
-                    width: 250.w,
-                    height: 150.h,
-                  ),
                 ],
               ),
             ),
@@ -168,6 +166,7 @@ class _Question2State extends State<Question2> {
                                   .add({
                                 'number_of_attendees': widget
                                     .selectedNumber, // Store the selected number
+                                'user_name': widget.name,
                                 'timestamp': FieldValue
                                     .serverTimestamp(), // Add a server-side timestamp
                               });

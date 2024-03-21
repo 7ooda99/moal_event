@@ -82,12 +82,6 @@ class MyHomePage extends StatelessWidget {
                       height: isWideScreen ? 150.h : 150.h,
                     ),
                     // Only display the second image on wide screens
-                    Image.asset(
-                      'assets/3.png',
-                      fit: BoxFit.fill,
-                      width: 250.w,
-                      height: 150.h,
-                    ),
                   ],
                 ),
               ),
